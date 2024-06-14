@@ -7,7 +7,7 @@ DASHBOARD_OWNER_EMAIL=$3  # required is making monaco dashboards SETUP_TYPE=all.
                           # in SETUP_TYPE and KEYPAIR_NAME parameters
 SETUP_TYPE=$4             # optional argument. values are: all, monolith-vm, services-vm.  default is all
                           # this allows to just recreate the cloudformation stack is one VM stack fails
-KEYPAIR_NAME=$5           # optional argument. if leave blank it will default to ee-default-keypair
+KEYPAIR_NAME=$5           # optional argument. if leave blank it will default to ws-default-keypair
                           # this allows to override for testing outside of AWS event engine account
 
 if [ -z $DT_BASEURL ]; then
@@ -25,7 +25,7 @@ if [ -z $SETUP_TYPE ]; then
 fi
 
 if [ -z $KEYPAIR_NAME ]; then
-  KEYPAIR_NAME=ee-default-keypair
+  KEYPAIR_NAME=ws-default-keypair
 fi
 
 make_creds_file() {
@@ -227,7 +227,7 @@ fi
 
 # Deploy Kubernetes cluster
 echo "Deploying Kubernetes cluster..."
-eksctl create cluster --with-oidc --ssh-access --version=1.26 --managed --name dynatrace-workshop --tags "Purpose=dynatrace-modernization-workshop" --ssh-public-key ee-default-keypair
+eksctl create cluster --with-oidc --ssh-access --version=1.26 --managed --name dynatrace-workshop --tags "Purpose=dynatrace-modernization-workshop" --ssh-public-key ws-default-keypair
 
 echo "Kubernetes cluster deployment complete!"
 }
