@@ -11,7 +11,7 @@ Parameters:
   KeyPairName:
     Description: KeyPair name for the EC2 instance
     Type: String
-    Default: ee-default-keypair
+    Default: ws-default-keypair
   ResourcePrefix:
     Description: Optional value to prefix resource names
     Type: String
